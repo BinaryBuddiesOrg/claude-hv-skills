@@ -57,14 +57,20 @@ class Failure(Exception):
         return d
 
 
+def common_flags() -> argparse.ArgumentParser:
+    """The flags every Studio script shares, as a parent parser. Scripts with subcommands pass
+    `parents=[common_flags()]` to each subparser so the flags work after the subcommand too."""
+    c = argparse.ArgumentParser(add_help=False)
+    c.add_argument("--dry-run", action="store_true", help="print the commands that would run; write nothing")
+    c.add_argument("--json", action="store_true", help="machine-readable result on stdout")
+    c.add_argument("--timeout", type=float, default=1800.0, help="seconds per external command (default 1800; 0 = no limit)")
+    c.add_argument("--overwrite", action="store_true", help="allow replacing an existing output file")
+    return c
+
+
 def base_parser(description: str) -> argparse.ArgumentParser:
-    """The flags every Studio script shares. Add the script's own on top."""
-    p = argparse.ArgumentParser(description=description)
-    p.add_argument("--dry-run", action="store_true", help="print the commands that would run; write nothing")
-    p.add_argument("--json", action="store_true", help="machine-readable result on stdout")
-    p.add_argument("--timeout", type=float, default=1800.0, help="seconds per external command (default 1800; 0 = no limit)")
-    p.add_argument("--overwrite", action="store_true", help="allow replacing an existing output file")
-    return p
+    """A parser with the shared flags. Add the script's own arguments on top."""
+    return argparse.ArgumentParser(description=description, parents=[common_flags()])
 
 
 def which(tool: str) -> str | None:

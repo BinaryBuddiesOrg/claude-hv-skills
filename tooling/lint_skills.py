@@ -123,11 +123,14 @@ def lint_skill(plugin: Path, skill: Path, rep: Report) -> None:
             if py.name.startswith("_"):
                 continue
             src = py.read_text(encoding="utf-8")
-            for flag in SCRIPT_FLAGS:
-                if flag not in src:
-                    rep.error(py, f"script does not support {flag} (CONVENTIONS § Scripts contract)")
-            if "argparse" not in src and "base_parser" not in src:
-                rep.error(py, "script has no argparse/base_parser, so --help cannot work")
+            uses_runtime = "base_parser" in src or "common_flags" in src
+            if not uses_runtime:
+                # a script that builds its own parser must spell the shared flags out itself
+                for flag in SCRIPT_FLAGS:
+                    if flag not in src:
+                        rep.error(py, f"script does not support {flag} (CONVENTIONS § Scripts contract; use _common.base_parser)")
+                if "argparse" not in src:
+                    rep.error(py, "script has no argparse/base_parser, so --help cannot work")
             if not (scripts / "_common.py").is_file():
                 rep.error(py, "scripts/ has no vendored _common.py")
 

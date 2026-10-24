@@ -7,6 +7,12 @@ its freshness date.
 
 Nothing here is installed by cloning the repo. Every entry is an offer.
 
+This file is the maintainers' ledger: vetting status, evidence, rejections. The copy end
+users receive — the recipes a Director may actually offer — is
+`plugins/core/skills/doctor/references/recipes.md` (plugins are installed alone, so the
+recipe text must live inside `core`). When a recipe changes, change both; newadder's
+vetting updates the status line in both.
+
 ## Entry format
 
 ```

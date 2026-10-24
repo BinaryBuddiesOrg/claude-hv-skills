@@ -102,6 +102,10 @@ sheet + one human look).
 Frame changes before captions (text is sized for the final frame); captions before export
 (never upscale burned text); loudness last before export.
 
+> Sections 7–10 are mirrored in the shipped copy the Director reads at run time:
+> `plugins/video/skills/director/references/decisions.md` (plugins are installed alone, so
+> the plugin cannot read this file). Edit both; a lint check for drift is planned.
+
 ## 7. Question dimensions — what the Director may ask
 
 Ordered by plan impact. The Director asks only the open ones, at most four, one round,

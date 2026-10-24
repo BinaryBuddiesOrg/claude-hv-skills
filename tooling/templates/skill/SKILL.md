@@ -13,7 +13,7 @@ metadata:
   version: 0.1.0
   capabilities: [{{domain}}.{{kind}}.{{slug}}]
   tools: [{{tool}}, {{optional-tool}}?]
-allowed-tools: Bash(${CLAUDE_SKILL_DIR}/scripts/*)
+allowed-tools: Bash(python3 ${CLAUDE_SKILL_DIR}/scripts/*)
 ---
 
 # {{skill}}
