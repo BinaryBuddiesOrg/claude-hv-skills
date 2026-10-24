@@ -71,8 +71,12 @@ def main() -> int:
         interval = max(p["duration"] / n, 0.04)
         start = interval / 2
         tile_w = max(160, a.width // cols)
-        vf = f"{pre}fps=1/{interval:.6f},scale={tile_w}:-2,tile={cols}x{rows}:padding=4:margin=4:color=0x202020"
-        cmd = ["ffmpeg", "-hide_banner", "-nostats", "-y", "-ss", f"{start:.3f}", "-i", a.file, "-vf", vf, "-frames:v", "1", a.output]
+        # select, not fps: pick the first decoded frame after the seek, then the first frame at least
+        # `interval` later each time. Exact timestamp comparisons, so every tile gets a frame; the fps
+        # filter's rounding can drop the last sample and leave a black tile.
+        pick = f"select='isnan(prev_selected_t)+gte(t-prev_selected_t\\,{interval * 0.999:.6f})'"
+        vf = f"{pre}{pick},scale={tile_w}:-2,tile={cols}x{rows}:padding=4:margin=4:color=0x202020"
+        cmd = ["ffmpeg", "-hide_banner", "-nostats", "-y", "-ss", f"{start:.3f}", "-i", a.file, "-vf", vf, "-vsync", "vfr", "-frames:v", "1", a.output]
         timestamps = [round(start + i * interval, 3) for i in range(n)]
         layout = f"{cols}x{rows}"
     run_or_fail(cmd, a.timeout, a.dry_run, what="ffmpeg look")
