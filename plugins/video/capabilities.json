@@ -1,7 +1,7 @@
 {
   "$schema_note": "What the video plugin can do today. Directors plan from this; REGISTRY.md is generated from it; gaps = taxonomy minus this. Fields: id <domain>.<kind>.<slug>; intents from taxonomy §1; style from §5; pipeline = ordered skills (plugin:skill); tools {name, min?, required, for?}; hardware {gpu_vram_gb_min, cpu_ok}; cost {time, quality}; status idea|draft|tested|stable|deprecated; evals = case names under plugins/video/evals/<skill>/.",
   "domain": "video",
-  "updated": "2026-10-24",
+  "updated": "2026-10-25",
   "capabilities": [
     {
       "id": "video.style.screencast-motion",
@@ -20,6 +20,7 @@
         "video:motion",
         "video:captions",
         "audio:music",
+        "video:assemble",
         "video:platform-export"
       ],
       "tools": [
@@ -42,7 +43,7 @@
         "time": "minutes",
         "quality": "good"
       },
-      "status": "planned",
+      "status": "draft",
       "skill": "video:screencast-motion",
       "evals": []
     },
@@ -57,9 +58,10 @@
       "summary": "Footage to a 9:16 short: pick moments, reframe (blur-pad or crop), captions, music, platform export",
       "pipeline": [
         "core:doctor",
-        "video:edit",
+        "video:clips-to-short",
         "video:captions",
         "audio:music",
+        "video:assemble",
         "video:platform-export"
       ],
       "tools": [
@@ -82,7 +84,7 @@
         "time": "minutes",
         "quality": "good"
       },
-      "status": "planned",
+      "status": "draft",
       "skill": "video:clips-to-short",
       "evals": []
     },
@@ -98,8 +100,10 @@
       "pipeline": [
         "core:doctor",
         "video:slideshow",
-        "video:captions",
+        "video:motion",
         "audio:music",
+        "audio:voice",
+        "video:assemble",
         "video:platform-export"
       ],
       "tools": [
@@ -117,7 +121,7 @@
         "time": "minutes",
         "quality": "good"
       },
-      "status": "planned",
+      "status": "draft",
       "skill": "video:slideshow",
       "evals": []
     },
@@ -382,6 +386,35 @@
       },
       "status": "draft",
       "skill": "video:assemble",
+      "evals": []
+    },
+    {
+      "id": "video.stage.motion",
+      "intents": [
+        "*"
+      ],
+      "style": null,
+      "summary": "Per-beat clips with push/pull/pan/Ken Burns on a focus point, phone/browser frames with rounded corners over blur/solid/gradient, animated on-screen text (ASS), title/lower-third/end cards, logo badges",
+      "pipeline": [
+        "video:motion"
+      ],
+      "tools": [
+        {
+          "name": "ffmpeg",
+          "min": "6.0",
+          "required": true
+        }
+      ],
+      "hardware": {
+        "gpu_vram_gb_min": 0,
+        "cpu_ok": true
+      },
+      "cost": {
+        "time": "minutes",
+        "quality": "good"
+      },
+      "status": "draft",
+      "skill": "video:motion",
       "evals": []
     }
   ]
