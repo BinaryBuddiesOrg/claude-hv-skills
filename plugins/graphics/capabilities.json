@@ -1,0 +1,6 @@
+{
+  "$schema_note": "What the graphics plugin can do today. Same shape as plugins/video/capabilities.json. Empty until Phase 4.",
+  "domain": "graphics",
+  "updated": "2026-10-24",
+  "capabilities": []
+}

@@ -2,6 +2,13 @@
 
 All notable changes. Versions follow semver per plugin; this file tracks the repo.
 
+## Unreleased
+
+- tooling: `lint_skills.py` (CONVENTIONS enforcement), `build_registry.py` (generated REGISTRY.md, `--check` gate), `gaps.py` (taxonomy − capabilities), `new_skill.py` (scaffolder), shared `_lib.py`
+- `templates/skill/scripts/_common.py`: the runtime every skill script vendors — shared flags, JSON shape, exit codes, `ffprobe`, tool detection
+- empty `capabilities.json` for audio, graphics, game, apps
+- REGISTRY.md is now generated
+
 ## 0.1.0 — 2026-10-24 — skeleton
 
 - Design: ARCHITECTURE, CONVENTIONS, DECISIONS (ADR-001 … 012), ROADMAP, TOOLBOX

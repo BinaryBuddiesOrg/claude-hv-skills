@@ -1,16 +1,27 @@
 # tooling
 
 Maintainer scripts. Python 3.10+, standard library only (ADR-006). None of these are
-shipped to users; they keep the repo consistent and let newadder work unattended.
+shipped to users; they keep the repo consistent and let newadder work unattended. Run
+them from anywhere — paths resolve from the repo root.
 
-| Script | Purpose | Status |
-|---|---|---|
-| `new_skill.py <domain> <skill>` | scaffold `plugins/<domain>/skills/<skill>/` from `templates/skill/`, vendor `_common.py`, add an empty capability entry and an eval case folder | planned |
-| `lint_skills.py [path]` | enforce CONVENTIONS.md: frontmatter set and lengths, description trigger-first, SKILL.md size, required sections in order, scripts flags, vendored `_common.py` identical, no hand edits to REGISTRY.md, eval case format | planned |
-| `build_registry.py [--check]` | generate REGISTRY.md from `plugins/*/capabilities.json` and skill frontmatter; `--check` fails if the committed file differs | planned |
-| `gaps.py <domain>` | taxonomy − capabilities: style families and stages without a capability, capabilities below `tested`, heavy-hardware-only routes; newadder's worklist | planned |
-| `doctor.py [--json]` | the maintainer-side machine inventory (the user-side version lives in `core:doctor`); used to write the TOOLBOX snapshot | planned |
-| `templates/skill/` | the SKILL.md template and `scripts/_common.py` that every skill vendors | SKILL.md drafted |
+| Script | Purpose |
+|---|---|
+| `new_skill.py <domain> <skill> [--role R] [--capability ID] [--with-scripts]` | scaffold `plugins/<domain>/skills/<skill>/` from `templates/skill/`, an eval case, and (optionally) a capability entry; fails lint until its `{{placeholders}}` are filled |
+| `lint_skills.py [path]` | enforce CONVENTIONS.md: frontmatter set and lengths, section order, SKILL.md size, scripts contract, vendored `_common.py` identical, capabilities.json shape and skill references, eval case format, REGISTRY.md freshness |
+| `build_registry.py [--check]` | generate REGISTRY.md from `plugins/*/capabilities.json`, skill frontmatter and agents; `--check` exits 1 when stale (deterministic, no timestamps) |
+| `gaps.py <domain> [--json]` | taxonomy − capabilities: uncovered style families, capabilities below `tested`, heavy-hardware-only routes, the taxonomy's own suggestions — newadder's worklist |
+| `_lib.py` | shared: repo paths, the frontmatter parser for the allowed YAML subset, plugin/skill/eval discovery |
+| `templates/skill/SKILL.md` | the skill template, section for section as CONVENTIONS.md § SKILL.md body |
+| `templates/skill/scripts/_common.py` | the runtime every skill with scripts vendors: shared flags, JSON shape, exit codes, `ffprobe`, tool detection |
 
-Run everything from the repo root. CI runs lint, validate and the registry check on
-every push; evals run only on changed plugins (they are billed model calls).
+The gate newadder runs before any commit (ARCHITECTURE.md § 6.6):
+
+```
+python3 tooling/lint_skills.py
+claude plugin validate plugins/<domain> --strict
+python3 tooling/build_registry.py --check
+claude plugin eval plugins/<domain> --case "<skill>/*" --allow-tools Bash,Write,Edit   # billed; only changed cases
+```
+
+The machine inventory for users lives in `plugins/core/skills/doctor/` (self-contained,
+as every plugin must be); there is no separate maintainer copy.

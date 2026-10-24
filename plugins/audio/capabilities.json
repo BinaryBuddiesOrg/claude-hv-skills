@@ -1,0 +1,6 @@
+{
+  "$schema_note": "What the audio plugin can do today. Same shape as plugins/video/capabilities.json. Empty until Phase 2.",
+  "domain": "audio",
+  "updated": "2026-10-24",
+  "capabilities": []
+}

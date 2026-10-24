@@ -1,0 +1,6 @@
+{
+  "$schema_note": "What the game plugin can do today. Same shape as plugins/video/capabilities.json. Empty until Phase 3.",
+  "domain": "game",
+  "updated": "2026-10-24",
+  "capabilities": []
+}

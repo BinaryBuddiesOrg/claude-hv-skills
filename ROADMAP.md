@@ -15,8 +15,8 @@ Current version: **0.1.0** (skeleton). Nothing is installed by cloning.
 - [x] Marketplace and plugin manifests for all domains
 - [x] Video taxonomy (first draft) and capabilities schema
 - [x] newadder agent draft; research/ and proposals/ memory layout
-- [ ] `tooling/`: `new_skill.py`, `lint_skills.py`, `build_registry.py`, `gaps.py`, `doctor.py`, skill template
-- [ ] `claude plugin validate` passes on every plugin
+- [x] `tooling/`: `new_skill.py`, `lint_skills.py`, `build_registry.py`, `gaps.py`, skill template and vendored `_common.py` runtime
+- [x] `claude plugin validate --strict` passes on the marketplace and every plugin
 - [ ] Dummy eval case proves `claude plugin eval` discovery of `evals/<skill>/<case>/`
 
 ## Phase 1 — Video, end to end — planned

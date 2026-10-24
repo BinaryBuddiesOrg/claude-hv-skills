@@ -1,0 +1,6 @@
+{
+  "$schema_note": "What the apps plugin can do today. Same shape as plugins/video/capabilities.json. Empty until Phase 5.",
+  "domain": "apps",
+  "updated": "2026-10-24",
+  "capabilities": []
+}
