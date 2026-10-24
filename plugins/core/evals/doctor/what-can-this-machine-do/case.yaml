@@ -1,0 +1,7 @@
+schema_version: "1.1"
+name: what-can-this-machine-do
+expected_outcome: |
+  The assistant runs the machine inventory (not guesses), reports the ffmpeg presence
+  and version, the GPU and its VRAM (or that there is none), which capability groups are
+  usable and which are missing with the tool that would unlock each, and installs
+  nothing. Missing tools are named with the recipe available, not run.

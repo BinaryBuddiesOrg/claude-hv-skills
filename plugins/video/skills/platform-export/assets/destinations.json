@@ -1,0 +1,73 @@
+{
+  "$schema_note": "Destination specs read by export.py and check.py and by the Director for the destination question. width/height are the export frame; fps null = keep the source rate (made constant); max_duration_s null = no cap; lufs/true_peak_dbtp are loudness targets; safe_zones are the percentages of the frame a platform's UI covers; audio false = export without an audio track.",
+  "instagram-reels": {
+    "label": "Instagram Reels", "aspect": "9:16", "width": 1080, "height": 1920, "fps": 30,
+    "max_duration_s": 90, "lufs": -14, "true_peak_dbtp": -1, "vcodec": "h264", "acodec": "aac", "pix_fmt": "yuv420p",
+    "max_size_mb": null, "audio": true, "captions_default": true,
+    "safe_zones": {"top_pct": 8, "bottom_pct": 20, "right_pct": 12, "left_pct": 0},
+    "notes": "The bottom fifth holds the caption/CTA row and the right column the action icons; keep burned text above them."
+  },
+  "tiktok": {
+    "label": "TikTok", "aspect": "9:16", "width": 1080, "height": 1920, "fps": 30,
+    "max_duration_s": 600, "lufs": -14, "true_peak_dbtp": -1, "vcodec": "h264", "acodec": "aac", "pix_fmt": "yuv420p",
+    "max_size_mb": null, "audio": true, "captions_default": true,
+    "safe_zones": {"top_pct": 10, "bottom_pct": 22, "right_pct": 12, "left_pct": 0},
+    "notes": "Under 60 s performs best; the UI overlay is larger than Reels."
+  },
+  "youtube-shorts": {
+    "label": "YouTube Shorts", "aspect": "9:16", "width": 1080, "height": 1920, "fps": 30,
+    "max_duration_s": 180, "lufs": -14, "true_peak_dbtp": -1, "vcodec": "h264", "acodec": "aac", "pix_fmt": "yuv420p",
+    "max_size_mb": null, "audio": true, "captions_default": true,
+    "safe_zones": {"top_pct": 8, "bottom_pct": 18, "right_pct": 10, "left_pct": 0},
+    "notes": "60 s is the classic cap; up to 180 s accepted. Title overlay sits at the top."
+  },
+  "youtube": {
+    "label": "YouTube", "aspect": "16:9", "width": 1920, "height": 1080, "fps": null,
+    "max_duration_s": null, "lufs": -14, "true_peak_dbtp": -1, "vcodec": "h264", "acodec": "aac", "pix_fmt": "yuv420p",
+    "max_size_mb": null, "audio": true, "captions_default": false,
+    "safe_zones": {"top_pct": 0, "bottom_pct": 0, "right_pct": 0, "left_pct": 0},
+    "notes": "Keep the source frame rate; 4K is fine when the source is 4K. Prefer a sidecar SRT over burned captions."
+  },
+  "x": {
+    "label": "X / Twitter", "aspect": "16:9", "width": 1920, "height": 1080, "fps": 30,
+    "max_duration_s": 140, "lufs": -14, "true_peak_dbtp": -1, "vcodec": "h264", "acodec": "aac", "pix_fmt": "yuv420p",
+    "max_size_mb": 512, "audio": true, "captions_default": true,
+    "safe_zones": {"top_pct": 0, "bottom_pct": 0, "right_pct": 0, "left_pct": 0},
+    "notes": "Autoplays muted in the feed; captions carry the message."
+  },
+  "linkedin": {
+    "label": "LinkedIn", "aspect": "1:1", "width": 1080, "height": 1080, "fps": 30,
+    "max_duration_s": 600, "lufs": -14, "true_peak_dbtp": -1, "vcodec": "h264", "acodec": "aac", "pix_fmt": "yuv420p",
+    "max_size_mb": 5000, "audio": true, "captions_default": true,
+    "safe_zones": {"top_pct": 0, "bottom_pct": 0, "right_pct": 0, "left_pct": 0},
+    "notes": "Square takes the most feed space; muted autoplay."
+  },
+  "facebook": {
+    "label": "Facebook", "aspect": "4:5", "width": 1080, "height": 1350, "fps": 30,
+    "max_duration_s": 14400, "lufs": -14, "true_peak_dbtp": -1, "vcodec": "h264", "acodec": "aac", "pix_fmt": "yuv420p",
+    "max_size_mb": 4000, "audio": true, "captions_default": true,
+    "safe_zones": {"top_pct": 0, "bottom_pct": 0, "right_pct": 0, "left_pct": 0},
+    "notes": "4:5 is the tallest feed format; muted autoplay."
+  },
+  "whatsapp-status": {
+    "label": "WhatsApp status", "aspect": "9:16", "width": 720, "height": 1280, "fps": 30,
+    "max_duration_s": 30, "lufs": -14, "true_peak_dbtp": -1, "vcodec": "h264", "acodec": "aac", "pix_fmt": "yuv420p",
+    "max_size_mb": 16, "audio": true, "captions_default": true,
+    "safe_zones": {"top_pct": 10, "bottom_pct": 15, "right_pct": 0, "left_pct": 0},
+    "notes": "Heavily recompressed; keep text large and the file small."
+  },
+  "website-loop": {
+    "label": "Website hero loop", "aspect": "16:9", "width": 1920, "height": 1080, "fps": 30,
+    "max_duration_s": 30, "lufs": null, "true_peak_dbtp": null, "vcodec": "h264", "acodec": null, "pix_fmt": "yuv420p",
+    "max_size_mb": 8, "audio": false, "captions_default": false,
+    "safe_zones": {"top_pct": 0, "bottom_pct": 0, "right_pct": 0, "left_pct": 0},
+    "notes": "No audio track, small file, seamless loop; 10–20 s is plenty."
+  },
+  "presentation": {
+    "label": "Presentation / embed", "aspect": "16:9", "width": 1920, "height": 1080, "fps": null,
+    "max_duration_s": null, "lufs": -16, "true_peak_dbtp": -1, "vcodec": "h264", "acodec": "aac", "pix_fmt": "yuv420p",
+    "max_size_mb": null, "audio": true, "captions_default": false,
+    "safe_zones": {"top_pct": 0, "bottom_pct": 0, "right_pct": 0, "left_pct": 0},
+    "notes": "Plays in a room through speakers; speech-first loudness."
+  }
+}

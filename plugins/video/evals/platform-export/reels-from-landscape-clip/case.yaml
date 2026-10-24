@@ -1,0 +1,7 @@
+schema_version: "1.1"
+name: reels-from-landscape-clip
+expected_outcome: |
+  A 1080x1920 H.264/AAC file is produced from the 16:9 clip using blur-pad (not a crop),
+  at 30 fps constant, loudness normalised to about -14 LUFS. The spec check is run and its
+  result reported, a contact sheet is rendered and looked at, and the reply ends with the
+  five-label report (Done / Steps / Check / Look / Notes) with measured numbers.

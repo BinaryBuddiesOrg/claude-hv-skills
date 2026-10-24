@@ -1,0 +1,9 @@
+schema_version: "1.1"
+name: promo-from-screen-recordings
+expected_outcome: |
+  The Director does not ask what the request or a probe already answers (intent = promo,
+  inputs = three portrait recordings). It asks at most one round of questions, each with
+  an Auto (recommended) option listed first, or asks nothing and runs on Auto. It writes
+  out/<slug>/brief.json before any media work, with every Auto choice recorded under
+  auto_decisions together with a reason, and a plan.json whose steps each have a check.
+  It states the plan in a few lines before executing or handing off.

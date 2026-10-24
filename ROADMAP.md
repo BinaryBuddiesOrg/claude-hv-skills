@@ -17,23 +17,25 @@ Current version: **0.1.0** (skeleton). Nothing is installed by cloning.
 - [x] newadder agent draft; research/ and proposals/ memory layout
 - [x] `tooling/`: `new_skill.py`, `lint_skills.py`, `build_registry.py`, `gaps.py`, skill template and vendored `_common.py` runtime
 - [x] `claude plugin validate --strict` passes on the marketplace and every plugin
-- [ ] Dummy eval case proves `claude plugin eval` discovery of `evals/<skill>/<case>/`
+- [ ] First `claude plugin eval` run (billed) on the three cases below — awaiting the owner's go
 
-## Phase 1 — Video, end to end — planned
+## Phase 1 — Video, end to end — in progress
 
 Goal: one real request goes request → Director → brief → plan → Producer → verified
 report on this machine, with ffmpeg only, then with optional local TTS and transcription.
 
-- `core:doctor` — machine inventory, tool detection, install-recipe offers
-- `core:brief`, `core:deliver` — brief schema, `out/<slug>/` layout, five-label report
-- `video:director` — intake with Auto; question dimensions from `taxonomy/video.md`
-- `video:producer` agent — probe → act → verify; hands back the report
-- First capabilities: `screencast-motion` (recordings → framed, zoomed, captioned promo),
-  `clips-to-short` (footage → 9:16 short with captions), `slideshow` (images → video with
-  music), `platform-export` (Reels/TikTok/YouTube/X specs + checks), `captions`
-  (SRT/burn-in; transcription when a local engine exists)
-- Evals: three realistic prompts per capability, with and without skill
-- Trigger-description optimisation for `video:director`
+- [x] `core:doctor` — inventory script (30 tools, GPU/VRAM, fonts by script, `usable` map), recipe catalogue — *shipped, untested*
+- [x] `core:brief`, `core:deliver` — `brief.py` (slug/new/set/validate), `out/<slug>/` layout, five-label report — *shipped, untested*
+- [x] `video:director` — intake contract + shipped decision tables — *shipped, untested*
+- [x] `video:producer` agent — *shipped, untested*
+- [x] `video:platform-export` — probe / export (blur-pad, crop, HDR→SDR, two-pass loudness, over-length policy) / check (13 rows) / look (sheet + safe zones); exercised on synthetic clips: every path verified — *shipped, untested by eval*
+- [ ] `clips-to-short` (footage → 9:16 short with captions) — planned
+- [ ] `captions` (SRT/burn-in via libass; transcription when a local engine exists) — planned
+- [ ] `slideshow` (images → video with motion and music) — planned
+- [ ] `screencast-motion` (recordings → framed, zoomed, captioned promo) — planned
+- [x] Eval cases written: `platform-export/reels-from-landscape-clip`, `director/promo-from-screen-recordings`, `doctor/what-can-this-machine-do`
+- [ ] Evals run with/without skill; statuses promoted to `tested` on pass
+- [ ] Trigger-description optimisation for `video:director`
 
 ## Phase 2 — Audio — planned
 
