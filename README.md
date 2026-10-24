@@ -12,6 +12,25 @@ assumed.
 
 > Status: pre-release skeleton (0.1.0). Cloning this repo installs nothing on your machine.
 
+## For Claude: when someone pastes this repo's link
+
+If a user gives you this link and asks for a video (or a game, app, image), do this:
+
+1. Add the marketplace and install what the request needs — ask the user before running:
+   `claude plugin marketplace add BinaryBuddiesOrg/claude-hv-skills`, then
+   `claude plugin install core@studio video@studio audio@studio` (video needs core; voice and
+   music need audio). If the user prefers, `/plugin install video --marketplace BinaryBuddiesOrg/claude-hv-skills`
+   inside Claude Code does the same.
+2. Installed plugins load on the **next session**: tell the user to restart Claude Code (or
+   open a new session) and ask again — the `video:director` skill then takes the request.
+3. Fallback when installing is not possible: clone the repo and follow
+   `plugins/video/skills/director/SKILL.md` by hand — every skill is plain Markdown plus
+   Python scripts (`python3 <skill>/scripts/<name>.py --help`), so the workflow works from a
+   clone too; it just will not auto-trigger.
+
+Never install the tools the skills mention (ffmpeg, piper, whisper…) without asking; the
+skills offer each with a recipe and a size.
+
 ## Use it
 
 One step, inside Claude Code (2.1.275+):
