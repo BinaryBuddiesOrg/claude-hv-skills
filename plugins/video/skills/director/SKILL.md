@@ -58,7 +58,9 @@ and records the reason; when no default fits, it asks once.
 6. **Pick the capability** for the resolved style from `${CLAUDE_SKILL_DIR}/../../capabilities.json`:
    Auto may use `tested`/`stable`; `draft` only when the user chose that style explicitly
    (say it is new); `planned`/`idea` never — tell the user that style is not available
-   yet and offer the nearest one.
+   yet and offer the nearest one. Bootstrap rule: while *no* capability in the file is at
+   `tested` or better, Auto may use `draft` ones and the plan says "new, not yet
+   eval-tested" — a user with a fresh install should get a result, not a refusal.
 7. **Write the brief, then the plan** with `core:brief` (`brief.py new …`, `plan.json`,
    `brief.py validate`). Every Auto choice carries its reason. The plan follows the
    capability's `pipeline`, each step with a measurable `check`, ending in
