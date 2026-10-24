@@ -2,5 +2,105 @@
   "$schema_note": "What the audio plugin can do today. Same shape as plugins/video/capabilities.json. Empty until Phase 2.",
   "domain": "audio",
   "updated": "2026-10-24",
-  "capabilities": []
+  "capabilities": [
+    {
+      "id": "audio.stage.voice",
+      "intents": [
+        "*"
+      ],
+      "style": null,
+      "summary": "Local TTS narration (piper / macOS say / espeak-ng) per beat with measured durations, aligned track at -16 LUFS; user recording alignment",
+      "pipeline": [
+        "audio:voice"
+      ],
+      "tools": [
+        {
+          "name": "ffmpeg",
+          "required": true
+        },
+        {
+          "name": "piper",
+          "required": false,
+          "for": "neural voices"
+        },
+        {
+          "name": "say",
+          "required": false,
+          "for": "macOS built-in"
+        },
+        {
+          "name": "espeak-ng",
+          "required": false,
+          "for": "fallback"
+        }
+      ],
+      "hardware": {
+        "gpu_vram_gb_min": 0,
+        "cpu_ok": true
+      },
+      "cost": {
+        "time": "seconds-minutes",
+        "quality": "good with piper"
+      },
+      "status": "draft",
+      "skill": "audio:voice",
+      "evals": []
+    },
+    {
+      "id": "audio.stage.music",
+      "intents": [
+        "*"
+      ],
+      "style": null,
+      "summary": "Fit a licensed music bed to length (crossfade loop, fades, -18 LUFS), duck under voice, place or synthesise sound effects",
+      "pipeline": [
+        "audio:music"
+      ],
+      "tools": [
+        {
+          "name": "ffmpeg",
+          "required": true
+        }
+      ],
+      "hardware": {
+        "gpu_vram_gb_min": 0,
+        "cpu_ok": true
+      },
+      "cost": {
+        "time": "seconds",
+        "quality": "good"
+      },
+      "status": "draft",
+      "skill": "audio:music",
+      "evals": []
+    },
+    {
+      "id": "audio.stage.cleanup",
+      "intents": [
+        "*"
+      ],
+      "style": null,
+      "summary": "Clean a voice recording: denoise, de-ess, compress, trim ends, -16 LUFS, measured before/after",
+      "pipeline": [
+        "audio:cleanup"
+      ],
+      "tools": [
+        {
+          "name": "ffmpeg",
+          "required": true
+        }
+      ],
+      "hardware": {
+        "gpu_vram_gb_min": 0,
+        "cpu_ok": true
+      },
+      "cost": {
+        "time": "seconds",
+        "quality": "good"
+      },
+      "status": "draft",
+      "skill": "audio:cleanup",
+      "evals": []
+    }
+  ]
 }

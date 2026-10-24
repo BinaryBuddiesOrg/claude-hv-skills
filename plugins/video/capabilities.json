@@ -151,7 +151,7 @@
         "time": "minutes",
         "quality": "good"
       },
-      "status": "planned",
+      "status": "draft",
       "skill": "video:captions",
       "evals": []
     },
@@ -331,6 +331,58 @@
       "skill": null,
       "evals": [],
       "note": "First newadder research target; see taxonomy/video.md §11"
+    },
+    {
+      "id": "video.stage.script",
+      "intents": [
+        "*"
+      ],
+      "style": null,
+      "summary": "Script and beat sheet (beats.json): hook, beats, voice lines, on-screen text, visuals, timing at a real speaking pace",
+      "pipeline": [
+        "video:script"
+      ],
+      "tools": [],
+      "hardware": {
+        "gpu_vram_gb_min": 0,
+        "cpu_ok": true
+      },
+      "cost": {
+        "time": "minutes",
+        "quality": "good"
+      },
+      "status": "draft",
+      "skill": "video:script",
+      "evals": []
+    },
+    {
+      "id": "video.stage.assemble",
+      "intents": [
+        "*"
+      ],
+      "style": null,
+      "summary": "Render engine: segments/stills + voice + ducked music + sfx + captions + overlays → edit.mp4 in one ffmpeg pass",
+      "pipeline": [
+        "video:assemble"
+      ],
+      "tools": [
+        {
+          "name": "ffmpeg",
+          "min": "6.0",
+          "required": true
+        }
+      ],
+      "hardware": {
+        "gpu_vram_gb_min": 0,
+        "cpu_ok": true
+      },
+      "cost": {
+        "time": "minutes",
+        "quality": "exact"
+      },
+      "status": "draft",
+      "skill": "video:assemble",
+      "evals": []
     }
   ]
 }
