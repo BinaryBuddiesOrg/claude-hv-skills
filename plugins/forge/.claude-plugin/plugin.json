@@ -1,0 +1,8 @@
+{
+  "name": "forge",
+  "displayName": "Studio Forge",
+  "version": "0.1.0",
+  "description": "Maintainers only. newadder: the agent that researches new tools and techniques, finds gaps between taxonomy and capabilities, writes and improves skills with evals, and commits behind automated gates. Plus skill scaffolding.",
+  "author": { "name": "BinaryBuddiesOrg", "url": "https://github.com/BinaryBuddiesOrg" },
+  "keywords": ["studio", "newadder", "maintainer", "research", "skill-authoring"]
+}

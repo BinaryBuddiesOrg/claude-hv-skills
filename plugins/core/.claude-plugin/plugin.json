@@ -1,0 +1,8 @@
+{
+  "name": "core",
+  "displayName": "Studio Core",
+  "version": "0.1.0",
+  "description": "Shared runtime for every Studio domain: doctor (what this machine can do, install recipes), brief schema, delivery folder and five-label report. Install alongside any domain plugin.",
+  "author": { "name": "BinaryBuddiesOrg", "url": "https://github.com/BinaryBuddiesOrg" },
+  "keywords": ["studio", "doctor", "brief", "report", "install-recipes"]
+}

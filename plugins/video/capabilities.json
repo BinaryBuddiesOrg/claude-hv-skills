@@ -1,0 +1,141 @@
+{
+  "$schema_note": "What the video plugin can do today. Directors plan from this; REGISTRY.md is generated from it; gaps = taxonomy minus this. Fields: id <domain>.<kind>.<slug>; intents from taxonomy §1; style from §5; pipeline = ordered skills (plugin:skill); tools {name, min?, required, for?}; hardware {gpu_vram_gb_min, cpu_ok}; cost {time, quality}; status idea|draft|tested|stable|deprecated; evals = case names under plugins/video/evals/<skill>/.",
+  "domain": "video",
+  "updated": "2026-10-24",
+  "capabilities": [
+    {
+      "id": "video.style.screencast-motion",
+      "intents": ["promo", "product-demo", "tutorial", "screencast"],
+      "style": "screencast-motion",
+      "summary": "Screen recordings in a device frame with zoom/pan on the action, cursor emphasis and kinetic captions",
+      "pipeline": ["core:doctor", "video:script", "audio:voice", "video:motion", "video:captions", "audio:music", "video:platform-export"],
+      "tools": [
+        { "name": "ffmpeg", "min": "6.0", "required": true },
+        { "name": "piper", "required": false, "for": "voice-over" }
+      ],
+      "hardware": { "gpu_vram_gb_min": 0, "cpu_ok": true },
+      "cost": { "time": "minutes", "quality": "good" },
+      "status": "planned",
+      "skill": "video:screencast-motion",
+      "evals": []
+    },
+    {
+      "id": "video.style.clips-to-short",
+      "intents": ["social-short", "promo", "highlight-reel"],
+      "style": "clips-to-short",
+      "summary": "Footage to a 9:16 short: pick moments, reframe (blur-pad or crop), captions, music, platform export",
+      "pipeline": ["core:doctor", "video:edit", "video:captions", "audio:music", "video:platform-export"],
+      "tools": [{ "name": "ffmpeg", "min": "6.0", "required": true }, { "name": "whisper.cpp", "required": false, "for": "transcribed captions" }],
+      "hardware": { "gpu_vram_gb_min": 0, "cpu_ok": true },
+      "cost": { "time": "minutes", "quality": "good" },
+      "status": "planned",
+      "skill": "video:clips-to-short",
+      "evals": []
+    },
+    {
+      "id": "video.style.slideshow",
+      "intents": ["slideshow-recap", "promo", "product-demo"],
+      "style": "slideshow",
+      "summary": "Images to video with Ken Burns motion, crossfades, titles and a music bed",
+      "pipeline": ["core:doctor", "video:slideshow", "video:captions", "audio:music", "video:platform-export"],
+      "tools": [{ "name": "ffmpeg", "min": "6.0", "required": true }],
+      "hardware": { "gpu_vram_gb_min": 0, "cpu_ok": true },
+      "cost": { "time": "minutes", "quality": "good" },
+      "status": "planned",
+      "skill": "video:slideshow",
+      "evals": []
+    },
+    {
+      "id": "video.stage.captions",
+      "intents": ["*"],
+      "style": null,
+      "summary": "Burned-in or sidecar captions from a transcript, an SRT, or local transcription; styling, safe zones, word highlight, CJK fonts",
+      "pipeline": ["video:captions"],
+      "tools": [{ "name": "ffmpeg", "min": "6.0", "required": true }, { "name": "whisper.cpp", "required": false, "for": "transcription" }],
+      "hardware": { "gpu_vram_gb_min": 0, "cpu_ok": true },
+      "cost": { "time": "minutes", "quality": "good" },
+      "status": "planned",
+      "skill": "video:captions",
+      "evals": []
+    },
+    {
+      "id": "video.stage.platform-export",
+      "intents": ["*"],
+      "style": null,
+      "summary": "Export and verify against a destination spec: aspect, length cap, codec, loudness, safe zones; contact sheet for the Look line",
+      "pipeline": ["video:platform-export"],
+      "tools": [{ "name": "ffmpeg", "min": "6.0", "required": true }],
+      "hardware": { "gpu_vram_gb_min": 0, "cpu_ok": true },
+      "cost": { "time": "seconds-minutes", "quality": "exact" },
+      "status": "planned",
+      "skill": "video:platform-export",
+      "evals": []
+    },
+    {
+      "id": "video.style.kinetic-typography",
+      "intents": ["kinetic-quote", "promo", "explainer"],
+      "style": "kinetic-typography",
+      "summary": "Words as the picture, timed to voice or music; no footage needed",
+      "pipeline": ["video:script", "audio:voice", "video:motion", "audio:music", "video:platform-export"],
+      "tools": [{ "name": "ffmpeg", "required": true }, { "name": "remotion-or-motion-canvas", "required": false, "for": "richer motion" }],
+      "hardware": { "gpu_vram_gb_min": 0, "cpu_ok": true },
+      "cost": { "time": "minutes", "quality": "good" },
+      "status": "idea",
+      "skill": null,
+      "evals": []
+    },
+    {
+      "id": "video.style.explainer-animated",
+      "intents": ["explainer", "product-demo"],
+      "style": "explainer-animated",
+      "summary": "Motion graphics explainer: icons, shapes, diagrams, transitions, narration",
+      "pipeline": [],
+      "tools": [{ "name": "remotion-or-motion-canvas-or-manim", "required": true }],
+      "hardware": { "gpu_vram_gb_min": 0, "cpu_ok": true },
+      "cost": { "time": "tens of minutes", "quality": "good" },
+      "status": "idea",
+      "skill": null,
+      "evals": []
+    },
+    {
+      "id": "video.style.talking-head-broll",
+      "intents": ["talking-head", "testimonial", "tutorial"],
+      "style": "talking-head-broll",
+      "summary": "Speaker footage with silence-aware jump cuts, b-roll inserts, lower thirds",
+      "pipeline": [],
+      "tools": [{ "name": "ffmpeg", "required": true }, { "name": "whisper.cpp", "required": false }],
+      "hardware": { "gpu_vram_gb_min": 0, "cpu_ok": true },
+      "cost": { "time": "minutes", "quality": "good" },
+      "status": "idea",
+      "skill": null,
+      "evals": []
+    },
+    {
+      "id": "video.style.audiogram",
+      "intents": ["podcast-clip"],
+      "style": "audiogram",
+      "summary": "Audio clip with waveform or cover art and captions for social",
+      "pipeline": [],
+      "tools": [{ "name": "ffmpeg", "required": true }],
+      "hardware": { "gpu_vram_gb_min": 0, "cpu_ok": true },
+      "cost": { "time": "minutes", "quality": "good" },
+      "status": "idea",
+      "skill": null,
+      "evals": []
+    },
+    {
+      "id": "video.style.anime-cartoon",
+      "intents": ["story-animation"],
+      "style": "anime-cartoon",
+      "summary": "2D animated characters and scenes from a script — tool not yet chosen; local diffusion needs ≥ 12 GB VRAM",
+      "pipeline": [],
+      "tools": [],
+      "hardware": { "gpu_vram_gb_min": 12, "cpu_ok": false },
+      "cost": { "time": "hours", "quality": "unknown" },
+      "status": "idea",
+      "skill": null,
+      "evals": [],
+      "note": "First newadder research target; see taxonomy/video.md §11"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "graphics",
+  "displayName": "Studio Graphics",
+  "version": "0.1.0",
+  "description": "Image ops, vector/SVG, thumbnails and covers, background removal, 3D renders, sprite sheets.",
+  "author": { "name": "BinaryBuddiesOrg", "url": "https://github.com/BinaryBuddiesOrg" },
+  "keywords": ["graphics", "images", "svg", "thumbnail", "blender", "sprites", "studio"]
+}

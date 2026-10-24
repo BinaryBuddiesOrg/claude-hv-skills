@@ -1,0 +1,8 @@
+{
+  "name": "audio",
+  "displayName": "Studio Audio",
+  "version": "0.1.0",
+  "description": "Voice-over with local TTS, podcast clean-up, loudness, music beds with ducking, SFX. Used by video for voice and music.",
+  "author": { "name": "BinaryBuddiesOrg", "url": "https://github.com/BinaryBuddiesOrg" },
+  "keywords": ["audio", "tts", "voice-over", "podcast", "loudness", "music", "studio"]
+}

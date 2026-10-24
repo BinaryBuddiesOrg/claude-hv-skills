@@ -1,0 +1,14 @@
+{
+  "name": "studio",
+  "description": "Studio: Claude skills for video, audio, graphics, games and apps. Director-led intake with Auto mode, verified deliverables, self-improving via newadder.",
+  "owner": { "name": "BinaryBuddiesOrg", "url": "https://github.com/BinaryBuddiesOrg" },
+  "plugins": [
+    { "name": "core", "source": "./plugins/core", "description": "Shared runtime: doctor (machine capabilities, install recipes), briefs, delivery and report conventions. Install alongside any domain.", "category": "productivity" },
+    { "name": "video", "source": "./plugins/video", "description": "Video Director and pipelines: promo, explainer, shorts, screencasts, captions, motion, music, platform exports.", "category": "media" },
+    { "name": "audio", "source": "./plugins/audio", "description": "Voice-over with local TTS, podcast clean-up, loudness, music and SFX.", "category": "media" },
+    { "name": "graphics", "source": "./plugins/graphics", "description": "Image ops, vector/SVG, thumbnails, background removal, 3D renders, sprites.", "category": "media" },
+    { "name": "game", "source": "./plugins/game", "description": "Game Director and pipelines for Godot and web games: scaffold, scenes, assets, export.", "category": "development" },
+    { "name": "apps", "source": "./plugins/apps", "description": "App Director and pipelines: web, mobile, desktop, backend, deploy, e2e, store assets.", "category": "development" },
+    { "name": "forge", "source": "./plugins/forge", "description": "Maintainers only: newadder (research and grow the repo), skill scaffolding and quality gates.", "category": "development" }
+  ]
+}

@@ -1,0 +1,16 @@
+# eval runs are billed, machine-specific and large
+plugins/*/evals/results/
+*-workspace/
+
+# python
+__pycache__/
+*.pyc
+
+# local scratch and deliverables produced while developing
+out/
+.studio-cache/
+
+# editors / OS
+.DS_Store
+.vscode/
+.idea/
