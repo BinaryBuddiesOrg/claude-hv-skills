@@ -260,6 +260,16 @@ def lint_registry(rep: Report) -> None:
         rep.error(L.REGISTRY, "generated marker missing — was it edited by hand?")
     if not build_registry.check():
         rep.error(L.REGISTRY, "stale; run python3 tooling/build_registry.py (REGISTRY.md is generated, never edited)")
+    try:
+        import stamp_versions
+        for plugin in L.plugin_dirs():
+            mf = plugin / ".claude-plugin" / "plugin.json"
+            have = json.loads(mf.read_text(encoding="utf-8")).get("version")
+            want = stamp_versions.expected_version(plugin)
+            if have != want:
+                rep.error(mf, f"version {have} is stale (expected {want}); run python3 tooling/stamp_versions.py (ADR-013)")
+    except Exception as e:  # git missing or not a repo: versions cannot be derived, say so once
+        rep.warn(L.PLUGINS, f"version check skipped: {e}")
 
 
 def main(argv: list[str]) -> int:

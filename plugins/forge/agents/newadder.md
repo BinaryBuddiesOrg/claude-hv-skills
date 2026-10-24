@@ -100,9 +100,10 @@ nobody re-evaluates it next month.
 All of these must pass; a failure means fix and re-run, never "commit anyway":
 
 ```
-python3 tooling/lint_skills.py
+python3 tooling/stamp_versions.py            # bump the versions of the plugins you touched
+python3 tooling/build_registry.py            # regenerate REGISTRY.md
+python3 tooling/lint_skills.py               # includes the registry and version checks
 claude plugin validate plugins/<domain> --strict
-python3 tooling/build_registry.py --check   # or without --check to regenerate REGISTRY.md, then re-check
 claude plugin eval plugins/<domain> --case "<skill>/*" --allow-tools Bash,Write,Edit
 ```
 

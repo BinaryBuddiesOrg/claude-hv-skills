@@ -87,8 +87,9 @@ A style family is the unit a Director offers as an option and a capability imple
 | `audiogram` | audio with waveform or art and captions | audio + image |
 | `lyric` | timed lyrics over visuals | audio + lyrics |
 | `whiteboard` | drawn-in illustrations with narration | script |
-| `anime-cartoon` | 2D animated characters and scenes | script; tool-dependent |
-| `3d-product` | rendered product or title sequences | model or text |
+| `anime-cartoon` | 2D animated characters and scenes | script; served by `ai-shots` with a character sheet and 2D style anchors |
+| `ai-shots` | footage nobody filmed: director-grade prompts per beat for the user's AI video tool, clips verified and assembled | script; the user's generator account |
+| `3d-product` | rendered product or title sequences | model or text (Blender headless — graphics plugin, planned) |
 | `meme-format` | template with text and timing | template + text |
 
 ## 6. Pipeline stages
@@ -161,10 +162,16 @@ everything written under `out/<slug>/`.
 
 ## 11. Gaps newadder should look at first
 
-- anime / cartoon and hand-drawn styles: which 2D tools run on CPU or ≤ 4 GB GPU
-- local TTS: voice quality and licences of Piper, Kokoro and newer engines
-- local transcription: whisper.cpp vs faster-whisper speed on CPU for 10-minute inputs
-- programmatic motion graphics: Remotion / Motion Canvas vs pure ffmpeg for device
-  frames and kinetic captions — which is faster to install and more reliable headless
-- smart reframing (subject-following crop) without a GPU
-- slides (PDF/PPTX) → images without LibreOffice
+- vet the shipped-but-untested scripts on real media: every `video:*` and `audio:*`
+  skill is `draft` until its eval cases pass — run them, fix what breaks, promote
+- local TTS: prove piper voices per language (names in `audio:voice` references are
+  unverified), compare Kokoro and newer CPU engines, record licences
+- local transcription: whisper.cpp vs whisper-ctranslate2 speed on CPU for 10-minute
+  inputs; word-timestamp quality for karaoke and filler removal
+- whiteboard / hand-drawn stroke animation: a CPU tool (candidate for `explainer-animated`)
+- smart reframing (subject-following crop) without a GPU, for `clips-to-short`
+- Remotion: pin a version, prove `assets/remotion/Explainer.tsx` renders, measure time
+- AI video tools table (`ai-shots` references): re-vet lengths, aspects, reference
+  support every 30 days; local models on ≥ 12 GB GPUs as a heavy route
+- 3D product shots and titles (Blender headless) — the graphics plugin's first job
+- slides (PDF/PPTX) → images: poppler vs LibreOffice availability per OS

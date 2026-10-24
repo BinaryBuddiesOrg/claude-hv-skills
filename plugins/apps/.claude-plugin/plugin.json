@@ -1,8 +1,19 @@
 {
   "name": "apps",
   "displayName": "Studio Apps",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "App Director and pipelines: web, mobile, desktop, backend, deploy, end-to-end tests, store assets. Every step verified by a test or a screenshot.",
-  "author": { "name": "BinaryBuddiesOrg", "url": "https://github.com/BinaryBuddiesOrg" },
-  "keywords": ["apps", "web", "mobile", "desktop", "backend", "deploy", "studio"]
+  "author": {
+    "name": "BinaryBuddiesOrg",
+    "url": "https://github.com/BinaryBuddiesOrg"
+  },
+  "keywords": [
+    "apps",
+    "web",
+    "mobile",
+    "desktop",
+    "backend",
+    "deploy",
+    "studio"
+  ]
 }

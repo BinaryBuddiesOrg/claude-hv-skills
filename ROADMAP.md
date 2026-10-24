@@ -29,18 +29,18 @@ report on this machine, with ffmpeg only, then with optional local TTS and trans
 - [x] `video:director` — intake contract + shipped decision tables — *shipped, untested*
 - [x] `video:producer` agent — *shipped, untested*
 - [x] `video:platform-export` — probe / export (blur-pad, crop, HDR→SDR, two-pass loudness, over-length policy) / check (13 rows) / look (sheet + safe zones); exercised on synthetic clips: every path verified — *shipped, untested by eval*
-- [ ] `clips-to-short` (footage → 9:16 short with captions) — planned
-- [ ] `captions` (SRT/burn-in via libass; transcription when a local engine exists) — planned
-- [ ] `slideshow` (images → video with motion and music) — planned
-- [ ] `screencast-motion` (recordings → framed, zoomed, captioned promo) — planned
+- [x] `script` (beats.json, structures, timing), `captions` (SRT→ASS, styles, safe zones, transcription), `assemble` (timeline render engine), `motion` (zoom/pan, frames, animated text, cards) — *shipped, untested*
+- [x] Styles: `screencast-motion`, `clips-to-short`, `slideshow`, `talking-head-broll`, `audiogram`, `lyric`, `kinetic-typography`, `explainer-animated`, `ai-shots` (+ anime-cartoon) — *shipped, untested*
 - [x] Eval cases written: `platform-export/reels-from-landscape-clip`, `director/promo-from-screen-recordings`, `doctor/what-can-this-machine-do`
-- [ ] Evals run with/without skill; statuses promoted to `tested` on pass
+- [ ] Evals run with/without skill; statuses promoted to `tested` on pass — **the next job: real media through every script**
 - [ ] Trigger-description optimisation for `video:director`
 
-## Phase 2 — Audio — planned
+## Phase 2 — Audio — in progress
 
-Voice-over with local TTS (candidates in TOOLBOX.md), podcast clean-up, loudness, music
-bed with ducking, SFX placement. Video depends on this for voice; build it right after.
+- [x] `audio:voice` (piper / macOS say / espeak-ng, per-beat files, measured durations, aligned track, recording alignment) — *shipped, untested*
+- [x] `audio:music` (fit with crossfade loop, duck, built-in sfx, licensed sources) — *shipped, untested*
+- [x] `audio:cleanup` (denoise by measured floor, de-ess, compress, trim, level) — *shipped, untested*
+- [ ] piper voices vetted per language; Kokoro compared — newadder
 
 ## Phase 3 — Game — planned
 

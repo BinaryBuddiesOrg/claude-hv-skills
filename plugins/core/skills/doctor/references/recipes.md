@@ -170,6 +170,48 @@ size: ~150 MB; export templates are a separate ~1 GB download
 traps: exports need the matching export templates version; `--headless` for CI-style runs
 ```
 
+## poppler — render PDF pages to images (slides → video)
+
+```
+tool: pdftoppm (poppler-utils)    licence: GPL-2.0/3.0                      vetted: no
+needs: CPU only
+linux:  sudo apt install poppler-utils
+macos:  brew install poppler
+windows: winget install oschwartz10612.Poppler   (or download the poppler-windows release and add bin/ to PATH)
+proves: pdftoppm -v
+unlocks: slides_to_images (PDF decks as slideshow beats)
+size: ~10 MB
+traps: PPTX needs LibreOffice first (below) or an export-to-PDF by the user
+```
+
+## libreoffice — convert PPTX/ODP decks to PDF headless
+
+```
+tool: soffice (LibreOffice)        licence: MPL-2.0                          vetted: no
+needs: CPU only
+linux:  sudo apt install libreoffice-impress
+macos:  brew install --cask libreoffice
+windows: winget install TheDocumentFoundation.LibreOffice
+proves: soffice --version
+unlocks: PPTX → PDF → slides_to_images
+size: ~300–700 MB — say so; exporting the deck to PDF by hand is the lighter path
+traps: first headless run can take a minute while profiles initialise
+```
+
+## espeak-ng — fallback text-to-speech (synthetic voice)
+
+```
+tool: espeak-ng                    licence: GPL-3.0                          vetted: no
+needs: CPU only
+linux:  sudo apt install espeak-ng
+macos:  brew install espeak-ng
+windows: download the espeak-ng release installer
+proves: espeak-ng --version
+unlocks: tts_voiceover (fallback quality: intelligible, unmistakably synthetic — say so)
+size: ~5 MB
+traps: use only for drafts and timing; piper for anything published
+```
+
 ## node — JavaScript runtime for web apps and games
 
 ```

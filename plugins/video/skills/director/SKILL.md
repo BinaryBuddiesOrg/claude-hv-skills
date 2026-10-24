@@ -99,10 +99,19 @@ can be changed afterwards with one brief edit. Never ask about fonts, codecs or 
 | "promo for my app, recordings in ./rec" | intent promo, inputs screencasts | destination, length, voice | `screencast-motion` |
 | "cut this into a 30 s short for Reels" | destination, length, inputs | style (Auto: clips-to-short), voice (Auto: original audio) | `clips-to-short` |
 | "turn these photos into a video with music" | inputs photos, music yes | destination, length | `slideshow` |
+| "tighten this up / cut the ums / add b-roll" (a speaker) | inputs: one person talking | destination (Auto: YouTube + 9:16 cut) | `talking-head-broll` |
+| "podcast clip for Instagram" (audio file) | input audio, destination | which clip (from the transcript) | `audiogram` |
+| song + lyrics ("lyric video") | inputs song + text | timing source, visuals | `lyric` |
+| "video from this quote / announce X with big text" | no inputs, the text | destination, length | `kinetic-typography` |
+| "explain how X works" (no footage) | intent explainer | destination, length, voice; route (ffmpeg / Remotion) | `explainer-animated` |
+| "a cinematic/anime/story video", "trailer for my book" | no inputs, story | AI tool/account, destination, length, voice | `ai-shots` |
 | "add captions and export for YouTube" | destination, inputs, stage | nothing — no question | `captions` → `platform-export` |
 | "something for social from these clips" | inputs | destination (Auto: 9:16 for all three), length, style | `clips-to-short` |
-| "explainer about X, I have no footage" | intent, no inputs | destination, length, voice; style Auto: kinetic-typography | `kinetic-typography` (if ≥ tested) |
 | "make it 15 s" / "swap the music" (after a job) | everything else | nothing | `core:brief set` → re-run dependent steps |
+
+The plan middle for every style is in `references/decisions.md` § 6; voice, music and
+recording clean-up come from the `audio` plugin (§ 7 there — say the install line once
+if it is missing and offer the no-voice route).
 
 ## Tools and installation
 

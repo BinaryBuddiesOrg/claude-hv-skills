@@ -1,8 +1,21 @@
 {
   "name": "video",
   "displayName": "Studio Video",
-  "version": "0.1.0",
+  "version": "0.9.0",
   "description": "Video Director and pipelines: promo, explainer, shorts, screencasts, captions, motion, music, platform exports. Asks one round of questions with Auto mode, verifies every output.",
-  "author": { "name": "BinaryBuddiesOrg", "url": "https://github.com/BinaryBuddiesOrg" },
-  "keywords": ["video", "ffmpeg", "captions", "reels", "tiktok", "youtube", "shorts", "motion-graphics", "studio"]
+  "author": {
+    "name": "BinaryBuddiesOrg",
+    "url": "https://github.com/BinaryBuddiesOrg"
+  },
+  "keywords": [
+    "video",
+    "ffmpeg",
+    "captions",
+    "reels",
+    "tiktok",
+    "youtube",
+    "shorts",
+    "motion-graphics",
+    "studio"
+  ]
 }

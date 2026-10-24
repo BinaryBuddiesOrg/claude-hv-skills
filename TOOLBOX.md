@@ -51,16 +51,26 @@ ImageMagick, Inkscape, GIMP, sox, Rust, Go, gh, yt-dlp, whisper, aseprite, tiled
 | ImageMagick | thumbnails, contact sheets, image prep | candidate; absent here |
 | Blender (headless) | 3D titles, product shots, camera moves | candidate; large install; CPU render works, slow |
 
-Styles like anime/cartoon generation via diffusion models need ≥ 12 GB VRAM for local
-use; they are recorded as heavy-hardware options, never defaults (ADR-002, § 5 of
-ARCHITECTURE.md). newadder's first video research task is to vet the candidates above.
+| poppler (`pdftoppm`) | PDF pages → images for slideshows | candidate; recipe in core:doctor |
+| LibreOffice (`soffice`) | PPTX → PDF headless | candidate; heavy install, offered with the size |
+| Remotion | React compositions rendered headless (explainer route B) | candidate; `plugins/video/skills/explainer-animated/assets/remotion/` ships a composition; pin a version when vetted |
+
+AI video generation (Veo, Runway, Kling, Pika, Seedance, PixVerse) is **not a tool
+Studio runs**: `video:ai-shots` writes the shots and prompts, the user generates in
+their own account, Studio verifies and assembles (ADR-002). The per-tool table lives in
+`plugins/video/skills/ai-shots/references/tools.md` and is re-vetted every 30 days by
+newadder. Local generation (Wan 2.x, CogVideoX, AnimateDiff pipelines) needs ≥ 12–24 GB
+VRAM and minutes per clip; it is recorded here as a heavy-hardware route, never a
+default. newadder's first video research task is to vet the candidates above and run
+every shipped script on real media.
 
 ## Audio
 
 | Tool | What | Status |
 |---|---|---|
 | ffmpeg | loudness, mixing, ducking, format | **present** |
-| Piper / Kokoro | local neural TTS for voice-over | candidates; CPU-capable; vet voice quality and licences |
+| Piper / Kokoro | local neural TTS for voice-over | candidates; CPU-capable; vet voice quality and licences; `audio:voice` drives piper, macOS `say`, espeak-ng |
+| espeak-ng | fallback synthetic TTS | candidate; drafts and timing only |
 | sox | quick audio transforms | candidate; absent here |
 | Local music generation | background music | heavy; record options, no default |
 

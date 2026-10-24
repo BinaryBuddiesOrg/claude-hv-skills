@@ -97,6 +97,19 @@ brief, not the chat, so a forked agent has everything it needs.
 **Why.** Users can scan it; Claude cannot claim success without a probe; adopted from
 ffmpeg-skill where it is proven across hundreds of eval runs.
 
+## ADR-013 — Plugin versions are stamped from git history before every commit (2026-10-25)
+
+**Decision.** `tooling/stamp_versions.py` sets each `plugin.json` `version` to
+`0.<N>.0`, N = commits that touched that plugin (plus the one being made). It runs in
+the gate before `git add`; `--check` is part of lint.
+**Why.** With a fixed version an installed user stays pinned until the number changes,
+and it was not being bumped. Removing `version` would let installs track commits, but
+`claude plugin validate --strict` (the gate) treats a missing version as an error. A
+stamped version keeps the validator strict and still bumps on every change, so
+`claude plugin update video@studio` always brings the latest.
+**Costs.** Versions are not hand-chosen semver (a breaking change is not visible as a
+major); if that is wanted later, a `MAJOR` override per plugin can be added to the stamp.
+
 ## ADR-012 — Licence MIT (proposed, 2026-10-24)
 
 **Decision.** Pending the owner's confirmation; MIT matches the public, reuse-friendly

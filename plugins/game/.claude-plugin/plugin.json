@@ -1,8 +1,18 @@
 {
   "name": "game",
   "displayName": "Studio Game",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "Game Director and pipelines for Godot and web games: brief to vertical slice, scaffold, scenes, asset pipeline, export.",
-  "author": { "name": "BinaryBuddiesOrg", "url": "https://github.com/BinaryBuddiesOrg" },
-  "keywords": ["game", "godot", "phaser", "threejs", "gamedev", "studio"]
+  "author": {
+    "name": "BinaryBuddiesOrg",
+    "url": "https://github.com/BinaryBuddiesOrg"
+  },
+  "keywords": [
+    "game",
+    "godot",
+    "phaser",
+    "threejs",
+    "gamedev",
+    "studio"
+  ]
 }

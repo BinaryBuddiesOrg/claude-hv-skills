@@ -98,7 +98,9 @@ def validate(doc: dict) -> tuple[list[str], list[str]]:
         ids.add(bid)
         if b.get("purpose") not in PURPOSES:
             warnings.append(f"beat {bid}: purpose '{b.get('purpose')}' is not a known purpose")
-        if not isinstance(b.get("duration_s"), (int, float)) or b["duration_s"] < MIN_BEAT_S - 1e-6:
+        # beats timed to a song (lyric) or filling a gap follow the audio, not the reading rule
+        song_timed = bool(b.get("timing"))
+        if not isinstance(b.get("duration_s"), (int, float)) or (b["duration_s"] < MIN_BEAT_S - 1e-6 and not song_timed):
             errors.append(f"beat {bid}: duration_s must be ≥ {MIN_BEAT_S} s (run `script.py time`)")
         if abs(float(b.get("start_s", -1)) - t) > 0.01:
             errors.append(f"beat {bid}: start_s {b.get('start_s')} is not contiguous (expected {t:.3f}); run `script.py time --write`")
@@ -111,8 +113,9 @@ def validate(doc: dict) -> tuple[list[str], list[str]]:
         if mode == "none" and b.get("voice"):
             errors.append(f"beat {bid}: voice.mode is none but the beat has a voice line")
         o = words(b.get("on_screen", ""))
-        if o > max_words:
-            errors.append(f"beat {bid}: on_screen has {o} words; max {max_words} for {aspect}")
+        limit = 12 if song_timed else max_words  # a sung line is shown as sung, up to two rows
+        if o > limit:
+            errors.append(f"beat {bid}: on_screen has {o} words; max {limit} for {aspect}")
         if (b.get("on_screen") or "").count("\n") > 1:
             errors.append(f"beat {bid}: on_screen has more than two lines")
     target = float(doc.get("target_duration_s") or 0)

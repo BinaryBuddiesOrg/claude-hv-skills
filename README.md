@@ -17,9 +17,12 @@ assumed.
 One step, inside Claude Code (2.1.275+):
 
 ```
-/plugin install video --marketplace BinaryBuddiesOrg/claude-hv-skills    # or: game, apps, graphics, audio
 /plugin install core  --marketplace BinaryBuddiesOrg/claude-hv-skills    # shared runtime, needed by every domain
+/plugin install video --marketplace BinaryBuddiesOrg/claude-hv-skills    # the video Director and every video style
+/plugin install audio --marketplace BinaryBuddiesOrg/claude-hv-skills    # voice-over, music, recording clean-up (video uses it)
 ```
+
+Later: `claude plugin update video@studio` (and `core`, `audio`) pulls new commits.
 
 Or from a terminal:
 
@@ -65,8 +68,8 @@ Behind the Director sits one knowledge model, shared by every domain:
 | Plugin | Status | Covers |
 |---|---|---|
 | `core` | draft | `doctor` (what this machine can do, install recipes), briefs, delivery and report conventions |
-| `video` | draft — built first | promo, explainer, social shorts, screencasts, captions, motion, music, platform exports |
-| `audio` | planned | voice-over (local TTS), podcast clean-up, music and SFX, loudness |
+| `video` | draft — complete, untested | 15 capabilities: screencast promos/demos, shorts from footage, slideshows, talking-head edits, audiograms, lyric videos, kinetic text, animated explainers, AI-shot stories; captions, motion, assembly, platform export |
+| `audio` | draft | voice-over with local TTS (piper / macOS say / espeak-ng), music fit and ducking, recording clean-up |
 | `graphics` | planned | image ops, vector/SVG, thumbnails, 3D renders, sprites, background removal |
 | `game` | planned | Godot and web games: scaffold, scenes, assets pipeline, export |
 | `apps` | planned | web, mobile, desktop, backend, deploy, end-to-end tests, store assets |

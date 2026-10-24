@@ -221,9 +221,10 @@ The loop:
    trigger phrases. Improving an existing skill follows the same path from its eval
    results and from repeated helper code found in transcripts.
 6. **Gate, then commit.** newadder is autonomous (DECISIONS.md ADR-004) and commits to
-   `main` only after every automated gate passes: `tooling/lint_skills.py`,
-   `claude plugin validate plugins/<domain> --strict`, `tooling/build_registry.py
-   --check`, and the new or changed evals. Commits follow `feat(video): …` /
+   `main` only after every automated gate passes: `tooling/stamp_versions.py` (bumps the
+   touched plugins, ADR-013), `tooling/build_registry.py`, `tooling/lint_skills.py`
+   (which checks the registry and the versions), `claude plugin validate
+   plugins/<domain> --strict`, and the new or changed evals. Commits follow `feat(video): …` /
    `fix(video): …` / `docs: …`; ROADMAP, CHANGELOG and DECISIONS are updated in the
    same commit.
 7. **Hand back** one report: added, improved, rejected (with why), and anything that

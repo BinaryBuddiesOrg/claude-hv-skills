@@ -4,6 +4,10 @@ All notable changes. Versions follow semver per plugin; this file tracks the rep
 
 ## Unreleased
 
+- video styles: `screencast-motion`, `clips-to-short`, `slideshow`, `talking-head-broll`, `audiogram`, `lyric`, `kinetic-typography`, `explainer-animated`, `ai-shots` (also serves anime-cartoon); stages: `script`, `captions`, `motion`, `assemble`
+- audio: `voice`, `music`, `cleanup`
+- director decision tables cover every style; audio plugin dependency stated
+- plugin versions stamped from git history before every commit (`tooling/stamp_versions.py`), so installed users receive every change (ADR-013)
 - `video:platform-export`: `probe.py`, `export.py` (destination specs, blur-pad/crop fit, fps conform, HDR→SDR tone-map, two-pass loudnorm, over-length fail/trim/allow, H.264/HEVC, NVENC), `check.py` (13 spec rows, ebur128 loudness, verified flag), `look.py` (contact sheet / frame, platform safe zones); `assets/destinations.json` for 10 destinations
 - `core:doctor`, `core:brief`, `core:deliver` skills; `video:director` skill with shipped decision tables; `video:producer` agent
 - eval cases for platform-export, director and doctor in the `claude plugin eval` layout
